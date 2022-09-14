@@ -1,0 +1,26 @@
+body{
+    border-style: solid solid solid solid;
+}
+#div1{
+    border-right-style: solid;
+}
+#div2{
+    border-style: none none solid solid;
+}
+
+#div3{
+    border-style: solid solid solid none;
+}
+
+#div4{
+    border-right-style: solid;
+}
+
+#div5{
+    border-left-style: solid;
+}
+#div1 .title, #div4 .title{
+    border-style: solid;
+    border-color: black;
+    border-radius: 7px;
+}
