@@ -12,17 +12,20 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-body{
-    display: grid;
-    grid-template-areas: 
-    "main aside"
-    "footer square";
-    grid-template-columns: 71fr 23fr;
-    grid-auto-rows: minmax(30vh, auto);
-    column-gap: 6%;
+#layout{
+    width: 100%;
 }
-.left-side {
-    display: grid;   
+#top-part{
+    
+}
+.left-part{
+    width: 71%;
+}
+.space{
+    width: 6%;
+}
+.right-part{
+    width: 23%;
 }
 #div1,
 #div3,
@@ -30,14 +33,14 @@ body{
 #div5 {
     padding: 1.5em 3.5em 1.5em 3.5em;
 }
-#div2 {    
-    background-color: #617dc9ee;
-}
-
-#div1 {   
+#div1 {
     background-color: rgb(170, 202, 237);
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+#div2 {
+    background-color: #617dc9ee;
+    vertical-align: top
 }
 #div3 {
     font-size: 1.1em;
