@@ -51,6 +51,7 @@ p {
     text-align: end;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    vertical-align: top
 }
 
 #div5 {
@@ -75,6 +76,7 @@ p {
 #div4 .title {
     float: left;
     margin-right: 0.8em;
+    padding-top: 0.13em;
 }
 
 #div1 p,

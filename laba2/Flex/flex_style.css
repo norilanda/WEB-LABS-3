@@ -37,7 +37,7 @@ body {
     background-color: #617dc9ee;
 }
 .footer{
-    min-height: 30vh;
+    height: minmax(30vh, fit-content);
     width: 100%;
     justify-self: flex-start;
     align-self: flex-end;
@@ -51,8 +51,7 @@ body {
 }
 
 #div1 {
-    min-height: 30vh;
-    height: fit-content;
+    height: minmax(30vh, fit-content);
     width: 100%;
     justify-self: flex-start;
     background-color: rgb(170, 202, 237);
@@ -61,7 +60,7 @@ body {
 }
 
 #div3 {
-    height: auto;
+    /* height: auto; */
     justify-self: flex-start;
     align-self: stretch;
     font-size: 1.1em;

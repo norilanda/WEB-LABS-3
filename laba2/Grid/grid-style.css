@@ -18,7 +18,7 @@ body{
     "main aside"
     "footer square";
     grid-template-columns: 71fr 23fr;
-    grid-auto-rows: minmax(30vh, auto);
+    grid-auto-rows: minmax(30vh, fit-content);
     column-gap: 6%;
 }
 .left-side {
