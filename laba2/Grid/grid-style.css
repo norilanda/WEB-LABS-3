@@ -18,11 +18,15 @@ body{
     "main aside"
     "footer square";
     grid-template-columns: 71fr 23fr;
-    grid-auto-rows: minmax(30vh, fit-content);
+    grid-template-rows: 1fr auto;
     column-gap: 6%;
 }
 .left-side {
-    display: grid;   
+    display: grid;  
+    grid-template-areas: 
+    "header"
+    "main";
+    grid-template-rows: auto 1fr; 
 }
 #div1,
 #div3,

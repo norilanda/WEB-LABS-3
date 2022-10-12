@@ -15,9 +15,9 @@ p {
 #layout{
     width: 100%;
 }
-/* #top-part{
-    
-} */
+#top-part{
+    vertical-align: top
+}
 .left-part{
     width: 71%;
 }
@@ -58,6 +58,7 @@ p {
     background-color: #1f0c67ee;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    vertical-align: top
 }
 .title {
     padding: 1px;
