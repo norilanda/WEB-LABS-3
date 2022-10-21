@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+body{
+    display: grid;
+    grid-template-areas: 
+    "main aside"
+    "footer square";
+    grid-template-columns: 71fr 23fr;
+    grid-template-rows: 1fr auto;
+    column-gap: 6%;
+}
+.left-side {
+    display: grid;  
+    grid-template-areas: 
+    "header"
+    "main";
+    grid-template-rows: auto 1fr; 
+}
+#div1,
+#div3,
+#div4,
+#div5 {
+    padding: 1.5em 3.5em 1.5em 3.5em;
+}
+#div2 {    
+    background-color: #617dc9ee;
+}
+
+#div1 {   
+    background-color: rgb(170, 202, 237);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+#div3 {
+    font-size: 1.1em;
+}
+
+#div4 {
+    background-color: rgb(170, 202, 237);
+    text-align: end;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#div5 {
+    background-color: #1f0c67ee;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.title {
+    padding: 1px;
+    margin: 0em 0.5em 0em 0.5em;
+    padding-top: 0.5em;
+    font-size: 2.7em;
+    text-align: center;
+    color: #e5f5fdee;
+    text-shadow: 4px 4px 2px #511110;
+}
+
+#div1 .title {
+    float: right;
+}
+
+#div4 .title {
+    float: left;
+    margin-right: 0.8em;
+}
+
+#div1 p,
+#div4 p {
+    letter-spacing: 0.25em;
+}
+
+.menu {
+    font-weight: bold;
+}
+
+.menu li {
+    list-style-type: none;
+    font-size: 1.75em;
+    display: block;
+    background-color: #6d94e1ee;
+    padding: 0.5em 0em 0.5em 0em;
+    margin: 0.1em 0 0 0.05em;
+    text-align: start;
+}
+
+.menu li:hover {
+    background-color: #190450ee;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #e5f5fdee;
+    display: block;
+    padding: 0.5em;
+}
+
+.quote {
+    text-align: center;
+    font-size: 1.4em;
+    font-style: italic;
+    color: #e5f5fdee;
+    text-shadow: 2px 2px 3px #511110;
+    letter-spacing: 2px;
+}
+
+.photo {
+    float: right;
+    margin: 0.5em 0em 0.7em 0.7em;
+}
+
+a {
+    color: #772722;
+    text-decoration: none;
+}
