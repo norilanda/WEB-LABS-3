@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.left-side{
+    width: 71%;
+    justify-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+#div1,
+#div3,
+#div4,
+#div5 {
+    padding: 1.5em 3.5em 1.5em 3.5em;
+}
+#div2{
+    width: 23%;
+    justify-self: flex-end;
+    background-color: #617dc9ee;
+}
+.footer{
+    height: minmax(30vh, fit-content);
+    width: 100%;
+    justify-self: flex-start;
+    align-self: flex-end;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+ .left-side, #div2, .footer {
+    flex-shrink: 1;    
+}
+
+#div1 {
+    height: minmax(30vh, fit-content);
+    width: 100%;
+    justify-self: flex-start;
+    background-color: rgb(170, 202, 237);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#div3 {
+    /* height: auto; */
+    justify-self: flex-start;
+    align-self: stretch;
+    font-size: 1.1em;
+}
+#div4 {
+    width: 71%;
+    justify-self: flex-start;
+    background-color: rgb(170, 202, 237);
+    text-align: end;  
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+#div5 {
+    width: 23%;
+    justify-self: flex-end;
+    background-color: #1f0c67ee;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    padding: 1px;
+    margin: 0em 0.5em 0em 0.5em;
+    padding-top: 0.5em;
+    font-size: 2.7em;
+    text-align: center;    
+    color: #e5f5fdee;
+    text-shadow: 4px 4px 2px #511110;
+}
+#div1 .title {      
+    order: 2;
+}
+#headerContent{
+    max-width: 36.7%;
+}
+
+#div1 p,#div4 p {
+    letter-spacing: 0.25em;
+}
+.menu{
+    font-weight: bold;
+}
+
+.menu li{
+    list-style-type: none;
+    font-size: 1.75em;
+    display: block;
+    background-color: #6d94e1ee;
+    padding: 0.5em 0em 0.5em 0em;
+    margin: 0.1em 0 0 0.05em; 
+    text-align: start;
+}
+.menu li:hover {
+    background-color: #190450ee;
+}
+.menu a {    
+    text-decoration: none;
+    color: #e5f5fdee;
+    display: block;    
+    padding: 0.5em;
+}
+.quote {
+    text-align: center;
+    font-size: 1.4em;
+    font-style: italic;
+    color: #e5f5fdee;
+    text-shadow: 2px 2px 3px #511110;
+    letter-spacing: 2px;    
+}
+.photo {
+    float: right;
+    margin: 0.5em 0em 0.7em 0.7em ;
+}
+a {
+    color: #772722;
+    text-decoration: none;
+}
+
+@media (min-width: 1001px) and (max-width: 1400px) {
+    header {
+        flex-direction: column;
+    }
+    #div1 .title {
+        order: 1;
+    }
+    #headerContent {
+        order: 2;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 1000px) {
+    body {
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .left-side {
+        order: 2;
+        width: 100%;
+    }
+    #div2 {
+        order: 1;
+        width: 100%;
+    }
+    .footer {
+        order: 3;
+        flex-direction: column;
+        width: 100%;
+    }
+    #div5{
+        order: 1;
+        width: 100%;
+    }
+    #div4 {
+        order: 2;
+        width: 100%;
+    }
+   
+    .menu {
+        display: flex;
+    }
+    header {
+        flex-direction: column;
+        width: 100%;
+    }
+    #div1 { width: 100%;}
+    #div1 .title {
+        order: 1;
+    }
+    #headerContent {
+        order: 2;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 649px) {
+    body {
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+    .left-side {
+        order: 2;
+        width: 100%;
+    }
+
+    #div2 {
+        order: 1;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .footer {
+        order: 3;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #div5 {
+        order: 1;
+        width: 100%;
+    }
+
+    #div4 {
+        order: 2;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+    }
+    .menu a {
+        text-align: center;
+    }
+
+    header {
+        flex-direction: column;
+        width: 100%;
+    }
+    #div1 {width: 100%;}
+    #div1 .title {
+        order: 1;
+    }
+    #headerContent {
+        order: 2;
+        max-width: 100%;
+    }
+}
