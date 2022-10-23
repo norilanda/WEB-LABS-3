@@ -21,6 +21,7 @@ min-height: 100%;
     background-color: rgb(13, 12, 13);
     min-height: 100px;
     padding: 0.5em;
+    min-height: auto;
 }
 .header h1{
     color: rgb(250, 254, 255);
@@ -29,11 +30,9 @@ min-height: 100%;
     margin-top: 3rem;
 }
 
-
 .contentConteiner{
     grid-area: main;
     text-align: center;
-    
 }
 
 .navigation{    
