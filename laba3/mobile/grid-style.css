@@ -28,10 +28,7 @@ body{
     "main";
     grid-template-rows: auto 1fr; 
 }
-#div1,
-#div3,
-#div4,
-#div5 {
+#div1,#div3,#div4,#div5 {
     padding: 1.5em 3.5em 1.5em 3.5em;
 }
 #div2 {    
@@ -52,12 +49,22 @@ body{
     text-align: end;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    display: grid;
+    grid-template-areas:
+            "title content";
+    grid-template-columns: auto 1fr;
 }
 
 #div5 {
     background-color: #1f0c67ee;
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+header {
+    display: grid;
+    grid-template-areas:
+            "content title";
+    grid-template-columns: 1fr auto;
 }
 .title {
     padding: 1px;
@@ -70,12 +77,11 @@ body{
 }
 
 #div1 .title {
-    float: right;
+    grid-area: title;
 }
 
 #div4 .title {
-    float: left;
-    margin-right: 0.8em;
+    grid-area: title;
 }
 
 #div1 p,
@@ -86,7 +92,6 @@ body{
 .menu {
     font-weight: bold;
 }
-
 .menu li {
     list-style-type: none;
     font-size: 1.75em;
@@ -96,11 +101,9 @@ body{
     margin: 0.1em 0 0 0.05em;
     text-align: start;
 }
-
 .menu li:hover {
     background-color: #190450ee;
 }
-
 .menu a {
     text-decoration: none;
     color: #e5f5fdee;
@@ -126,6 +129,23 @@ a {
     color: #772722;
     text-decoration: none;
 }
+@media (min-width: 1001px) and (max-width: 1400px)
+{
+    header {
+            display: grid;
+            grid-template-areas:
+                "title"
+                "headrContent"
+                ;
+            grid-template-rows: auto 1fr;
+        }
+    #div1 .title {
+        grid-area: title;
+    }
+    #headerContent {
+        grid-area: headrContent;
+    }
+}
 
 @media (min-width: 650px) and (max-width: 1000px)
 {
@@ -134,13 +154,11 @@ a {
             grid-template-areas:
                 "aside"
                 "header"
-                "main"
-                
-                "footer"
-                "quote";
+                "main"                
+                "quote"
+                "footer";
             grid-template-rows: auto 1fr auto auto auto;
             grid-template-columns: auto;
-            
         }
     #div1{
             grid-area: header;
@@ -152,13 +170,27 @@ a {
             grid-area: main;
     }
     #div4{
-            grid-area: quote;
+            grid-area: footer;            
     }
     #div5 {
-        grid-area: footer;
+        grid-area: quote;
     }
     .menu {
         display: flex;
+    }
+    header {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "headrContent"
+        ;
+        grid-template-rows: auto 1fr;
+    }
+    #div1 .title {
+        grid-area: title;
+    }
+    #headerContent {
+        grid-area: headrContent;
     }
 }
 
@@ -169,32 +201,32 @@ a {
             "aside"
             "header"
             "main"
-
-            "footer"
-            "quote";
+            "quote"
+            "footer"            ;
         grid-template-rows: auto 1fr auto auto auto;
         grid-template-columns: auto;
 
     }
-
     #div1 {
         grid-area: header;
     }
-
     #div2 {
         grid-area: aside;
     }
-
     #div3 {
         grid-area: main;
     }
-
-    #div4 {
-        grid-area: quote;
-    }
-
+   #div4 {
+       grid-area: footer;
+       display: grid;
+       grid-template-areas:
+           "title "
+           "footerContent";
+       grid-template-rows: 1fr auto;
+       grid-template-columns: auto;
+   }
     #div5 {
-        grid-area: footer;
+        grid-area: quote;
     }
 
     .menu {
@@ -203,5 +235,26 @@ a {
     }
     .menu a {
         text-align: center;
+    }
+    header {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "headrContent";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: auto;
+    }
+
+    #div1 .title {
+        grid-area: title;
+    }
+    #headerContent {
+        grid-area: headrContent;
+    }
+    #div4 .title {
+        grid-area: title;
+    }
+    #footerContent {
+        grid-area: footerContent;
     }
 }
