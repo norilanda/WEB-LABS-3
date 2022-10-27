@@ -138,6 +138,9 @@ header{
 .photo {
     float: right;
     margin: 0.5em 0em 0.7em 0.7em ;
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
 }
 a {
     color: #772722;
