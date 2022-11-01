@@ -44,3 +44,7 @@ min-height: 100%;
 .navigation li{
     margin-top: 1em;
 }
+#laba1, #laba2, #laba3, #laba4{
+    background-color: blanchedalmond;
+    padding: 1em 0 1em 0;
+}
