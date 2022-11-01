@@ -4,6 +4,10 @@ html, body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    width: 100%;
+}
+* {
+    box-sizing: border-box;
 }
 header{
     display: flex;
@@ -12,7 +16,7 @@ header{
     min-width: 400px;
 }
 .main{
-    padding: 3em 12.5% 3em 12.5%; /*auto */
+    padding: 3em 12.5% 3em 12.5%;
     display: flex;
     flex-direction: column;
     min-width: 400px; 
@@ -29,7 +33,6 @@ footer{
     color: white;
     width: 33%;
 }
-
 .menu_photo{
     max-height: 33px;
     width: auto;
@@ -121,20 +124,18 @@ a {
         gap: 0;
     }
     #girls {
-        width: 100%;
-        min-width: 300px;
+        min-width: 295px;
         order: 2;
         margin-top: -3rem;
         z-index: -1;
     }
     #girl_and_teacher{
-        width: 100%;
-        max-width: 310px;
-        min-width: 160px;
+        max-width: 280px;
+        min-width: 155px;
     }
     #boy_and_girls{
-        width: 100%;
-        min-width: 300px;
+        max-width: 395px;
+        min-width: 310px;
         margin: 0;
     }
     .left_text {
