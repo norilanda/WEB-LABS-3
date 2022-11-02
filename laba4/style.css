@@ -12,11 +12,11 @@ html, body {
 header{
     display: flex;
     justify-content: space-between ;
-    padding: 1em 12.5% 1em 12.5%;
+    padding: 1em 13.5% 1em 13.5%;
     min-width: 400px;
 }
 .main{
-    padding: 3em 12.5% 3em 12.5%;
+    padding: 3em 13.5% 3em 13.5%;
     display: flex;
     flex-direction: column;
     min-width: 400px; 
@@ -57,7 +57,7 @@ footer{
     margin-right: -6rem;
 }
 .left_text{
-    min-width: 25%;
+    min-width: 30%;
     font-style: oblique;
     padding: 1.8em;
     font-size: 1.25rem;
@@ -67,7 +67,7 @@ footer{
 #girls {
     width: 100%;
     max-width: 524px;
-    min-width: 480px;
+    min-width: 485px;
     margin-top: 7.5rem;
     align-self: flex-end;
 }
@@ -77,16 +77,15 @@ footer{
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: flex-start;
-    padding-left: 6.5em;
-    gap: 4.6em;
+    padding-left: 7.0em;
+    gap: 6.4em;
 }
-a {
+#link_learn_more a{
     color: #808080;
     text-decoration: none;
     padding: 0 0 5px 0;
     border-style: none none solid;
     border-color: #808080;
-    /* font: 16px "Open-Sans", sans-serif; */
 }
 #boy_and_girls{
     width: 100%;
@@ -100,7 +99,11 @@ a {
     font-size: 1.25rem;
     line-height: 1.8;
 }
-@media(min-width: 1001px) and (max-width: 1300px)
+#link_learn_more a:hover{
+    color: #C6771E;
+    border-color: #C6771E;
+}
+@media(min-width: 1001px) and (max-width: 1380px)
 {
     .main {
             padding: 3em 4% 3em 4%;;
@@ -120,6 +123,7 @@ a {
     .lower_side {
         display: flex;
         flex-direction: column;
+        align-items: center;
         padding: 0;
         gap: 0;
     }
@@ -134,6 +138,7 @@ a {
         min-width: 155px;
     }
     #boy_and_girls{
+        display: block;
         max-width: 395px;
         min-width: 310px;
         margin: 0;
