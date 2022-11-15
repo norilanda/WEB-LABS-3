@@ -132,6 +132,27 @@ a {
     color: #772722;
     text-decoration: none;
 }
+.inputNumber{
+    width: 10rem;
+    min-height: 2rem;
+}
+input, #task3_text {
+    font-size:1.2rem;
+}
+.buttonSubmit{
+    font-size: 1.2rem;
+    margin: 1rem 0 1rem 0;
+    width: 10rem;
+    min-height: 2rem;
+}
+#task3_text{
+    width: 40rem;
+    height: 10rem;
+}
+.form{
+    margin-left: 2.5rem;
+}
+
 @media (min-width: 1001px) and (max-width: 1400px)
 {
     header {
