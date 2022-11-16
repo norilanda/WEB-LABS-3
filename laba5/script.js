@@ -1,14 +1,13 @@
 
 //1
-function exchangeTitles()
+function exchangeTitles(id1, id2)
 {
-    var textUpperH = document.getElementById("upperHeading").innerText;
-    var textDownH = document.getElementById("downHeading").innerText;
+    var textUpperH = document.getElementById(id1).innerText;
+    var textDownH = document.getElementById(id2).innerText;
     document.getElementById("upperHeading").innerText = textDownH;
     document.getElementById("downHeading").innerText = textUpperH;
 }
-document.getElementById("upperHeading").onclick = function() {exchangeTitles()};
-document.getElementById("downHeading").onclick = function() {exchangeTitles()};
+document.getElementById("task1_change").onclick = function() {exchangeTitles("upperHeading", "downHeading")};
 
 //------------------------------------------------------------------------
 //2
@@ -85,22 +84,11 @@ function displayCountedWords(id)
     alert("Number of words in text = " + wordsNumber);   
 }
 
-window.addEventListener('load', (event) => {
-    // var cookie = document.cookie;
-    // if(cookie.length ==0 || cookie != "wordsNumber=")   //if there is cookie
-    // {
-        
-    //     alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
-    //     document.cookie = "wordsNumber=;"; //delete cookie  
-    //     alert("cookies have been deleted!");                     
-    // }          
-});
-
 function changeFormVisibility(){
     var cookie = document.cookie;
     if(cookie.length != 0 && cookie != "wordsNumber=")   //if there is cookie
     {
-        document.getElementById("form_task3").setAttribute("class", "hide");//hide form
+        document.getElementById("form_task3").setAttribute("class", "hide");//hide form 
 
         setTimeout(function (){ //delaying for a second to load page
         alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
@@ -112,3 +100,16 @@ function changeFormVisibility(){
 
 //------------------------------------------------------------------------
 //4
+function changeColor(id, colorId)
+{
+    var color = document.getElementById(colorId).value
+    document.getElementById(id).style.backgroundColor = color;
+    localStorage.setItem('color', color);
+}
+function setColorFromStorage(id)
+{
+    var color = localStorage.getItem('color');
+    document.getElementById(id).style.backgroundColor = color;
+}
+document.getElementById("task4_color").onmouseout = function() {changeColor("div2", "task4_color")};
+document.body.addEventListener("load", setColorFromStorage("div2"));
