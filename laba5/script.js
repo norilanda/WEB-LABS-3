@@ -75,12 +75,12 @@ function calcWords(text)
     }
     return wordsNumber;
 }
-window.addEventListener('load', () => {
+window.addEventListener('load', (event) => {
     var cookie = document.cookie;
     if(cookie && cookie != "wordsNumber=;")
     {
-        let form = getElementById("form_task3");
-        form.style.display = 'none';
+        // let form = getElementById("form_task3");
+        // form.style.display = 'none';
         alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!");
         document.cookie = "wordsNumber=;"; 
         alert("cookies have been deleted!");
@@ -93,3 +93,6 @@ function displayCountedWords()
     document.cookie = "wordsNumber="+wordsNumber+";";
     alert("Number of words in text = " + wordsNumber);    
 }
+
+//------------------------------------------------------------------------
+//4
