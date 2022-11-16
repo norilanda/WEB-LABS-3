@@ -79,11 +79,12 @@ function calcWords(text)
 var shouldDisplayFormAndMessage = false;
 window.addEventListener('load', (event) => {
     var cookie = document.cookie;
-    if(cookie && cookie != "wordsNumber=;")
+    if(!shouldDisplayFormAndMessage && cookie && cookie != "wordsNumber=;")
     {
         alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!");
         document.cookie = "wordsNumber=;";  
-        shouldDisplayFormAndMessage = true;       
+        shouldDisplayFormAndMessage = true;  
+        location.reload();     
     }          
 });
 function displayCountedWords()
