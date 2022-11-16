@@ -79,5 +79,8 @@ function displayCountedWords()
 {
     var text = document.getElementById("task3_text").value ;
     var wordsNumber = calcWords(text);
+    document.cookie = "wordsNumber="+wordsNumber+";";
     alert("Number of words in text = " + wordsNumber);
+    let c = document.cookie;
+    alert(c);
 }
