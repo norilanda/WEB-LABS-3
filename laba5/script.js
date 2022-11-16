@@ -1,5 +1,6 @@
 
 //1
+{
 function exchangeTitles(id1, id2)
 {
     var textUpperH = document.getElementById(id1).innerText;
@@ -8,9 +9,11 @@ function exchangeTitles(id1, id2)
     document.getElementById("downHeading").innerText = textUpperH;
 }
 document.getElementById("task1_change").onclick = function() {exchangeTitles("upperHeading", "downHeading")};
+}
 
 //------------------------------------------------------------------------
 //2
+{
 function calcParallelogramS(a, h)
 {    
     return a*h;
@@ -52,10 +55,11 @@ function displayS(elementID)
 }
 elementID = "div3";
 document.getElementById("task2_S").onclick = function() {displayS(elementID)};
+}
 
 //------------------------------------------------------------------------
 //3
-
+{
 function calcWords(text)
 {
     var splitedText = text.split(" "); 
@@ -96,10 +100,11 @@ function changeFormVisibility(){
         alert("cookies have been deleted!");  
         document.getElementById("form_task3").setAttribute("class", "form"); }, 1000);                  
     }         
+}    
 }
-
 //------------------------------------------------------------------------
 //4
+{
 function changeColor(id, colorId)
 {
     var color = document.getElementById(colorId).value
@@ -112,4 +117,77 @@ function setColorFromStorage(id)
     document.getElementById(id).style.backgroundColor = color;
 }
 document.getElementById("task4_color").onmouseout = function() {changeColor("div2", "task4_color")};
-document.body.addEventListener("load", setColorFromStorage("div2"));
+document.body.addEventListener("load", setColorFromStorage("div2"));    
+}
+
+//------------------------------------------------------------------------
+//5
+{
+    function AddInput(blockId, blockNumber)
+    {
+        if (document.getElementById(blockId).querySelector('#task5_add_'+ blockNumber) == null)
+        {
+        document.getElementById(blockId).insertAdjacentHTML('beforeend', 
+        '<button id="task5_add_'+ blockNumber +'" class="buttonSubmit"> SET BACKGROUND </button>'+
+        '<button id="task5_delete_'+ blockNumber +'" class="buttonSubmit"> DELETE BACKGROUND </button>');;
+        document.getElementById("task5_add_"+ blockNumber).addEventListener("click", function () {setBackgroundForTextNodes(blockId);});
+        document.getElementById("task5_delete_"+ blockNumber).addEventListener("click", function () {deleteBackgroundForTextNodes(blockId);});
+        }        
+    }
+    function FindTextNodes(id)
+    {    
+        function textNodesOfElement(node)
+        {
+            if(node.nodeType === Node.TEXT_NODE )
+            {            
+                let textInNode = node.nodeValue;
+                textInNode.replace("\n", "-");
+                for (let j = 0; j < textInNode.length; j++)
+                    {     
+                        var code = textInNode.charCodeAt(j);
+                        if ((code > 47 && code < 58) || // numeric (0-9)
+                            (code > 64 && code < 91) || // upper alpha (A-Z)
+                            (code > 96 && code < 123))// lower alpha (a-z)
+                        {
+                            textNodes.push(node);
+                            break;
+                        }
+                    }
+            }
+            else{
+                var len = node.childNodes.length;
+                for (var i = 0;  i < len; i++) {
+                    textNodesOfElement(node.childNodes[i]);
+                }
+            }
+        }
+        var textNodes = [];
+        textNodesOfElement(document.getElementById(id));        
+        return textNodes;
+        
+    }
+    function setBackgroundForTextNodes(id)
+    {
+        textNodes = FindTextNodes(id);
+        for (var i =0; i < textNodes.length; i++)
+        {
+            textNodes[i].parentNode.style.backgroundImage = "url(images/image1.jpg)";
+        }
+        localStorage.setItem(id, "url(images/image1.jpg)");
+    }
+    function deleteBackgroundForTextNodes(id)
+    {
+        textNodes = FindTextNodes(id);
+        for (var i =0; i < textNodes.length; i++)
+        {
+            textNodes[i].parentNode.style.backgroundImage = "none";
+        }
+        localStorage.removeItem(id);
+    }
+    document.getElementById('block1').onclick = function() {AddInput('div1', 1);};
+    document.getElementById('block2').onclick = function() {AddInput('div2', 2);};
+    document.getElementById('block3').onclick = function() {AddInput('div3', 3);};
+    document.getElementById('block4').onclick = function() {AddInput('div4', 4);};
+    document.getElementById('block5').onclick = function() {AddInput('div5', 5);};
+
+}

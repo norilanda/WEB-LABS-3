@@ -132,6 +132,10 @@ a {
     color: #772722;
     text-decoration: none;
 }
+ol{
+    margin: 2rem;
+}
+
 .inputNumber{
     width: 10rem;
     min-height: 2rem;
