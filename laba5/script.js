@@ -76,27 +76,32 @@ function calcWords(text)
     }
     return wordsNumber;
 }
-var shouldDisplayFormAndMessage = false;
-window.addEventListener('load', (event) => {
-    var cookie = document.cookie;
-    if(!shouldDisplayFormAndMessage || cookie && cookie != "wordsNumber=;")
-    {
-        alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!");
-        document.cookie = "wordsNumber=;";  
-        shouldDisplayFormAndMessage = true;  
-        location.reload();     
-    }          
-});
 function displayCountedWords()
 {
     var text = document.getElementById("task3_text").value ;
     var wordsNumber = calcWords(text);
     document.cookie = "wordsNumber="+wordsNumber+";";
-    alert("Number of words in text = " + wordsNumber);    
+    alert("Number of words in text = " + wordsNumber);  
+    return false;  
 }
+
+var shouldDisplayFormAndMessage = false;
+window.addEventListener('load', (event) => {
+    var cookie = document.cookie;
+    if(cookie.length ==0 || cookie != "wordsNumber=")   //if there is cookie
+    {
+        
+        shouldDisplayFormAndMessage = true; 
+        alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
+        document.cookie = "wordsNumber=;"; //delete cookie
+        return false;              
+    }          
+});
+
 function changeFormVisibility(){
     if(shouldDisplayFormAndMessage)
     {
+        
         document.getElementById("form_task3").setAttribute("class", "hide");
         shouldDisplayFormAndMessage = false;
         alert("cookies have been deleted!");        
