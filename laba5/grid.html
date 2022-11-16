@@ -25,7 +25,7 @@
             <p>If they say...</p></div>           
             
         </header>
-        <article id="div3">
+        <article id="div3" >
             <img src="images/LinkinParkAlbumCovers.jpg" alt="Albums" usemap="#albums" class="photo">
             <map name="albums">
                 <area coords="8,3,168,23,139,179,0,154" shape="poly" alt="Hybrid Theory" title="Hybrid Theory"
@@ -55,20 +55,20 @@
 
             <h4>Task 2: </h4>
             <p>Enter a and h:</p>  
-            <form class="form">                    
+            <div class="form">                    
                 <label for="task2_a">a (side):</label><br>
                 <input type="number" id="task2_a" name="a" min="0" class="inputNumber"> <br>            
                 <label for="task2_h">h (height):</label><br>
                 <input type="number" id="task2_h" name="h" min="0" class="inputNumber"> <br>
                 <button id="task2_S" class="buttonSubmit"> GET SQUARE </button>
-            </form>
+            </div>
 
             <h4>Task 3: </h4>
-            <form id="form_task3" class="form">
+            <div id="form_task3" class="form">
                 <label for="task3_text">Enter your text here:</label><br>
                 <textarea id="task3_text"> </textarea><br>
-                <button id="task3_CountWords" onclick="displayCountedWords()" class="buttonSubmit">COUNT WORDS</button>                
-            </form>
+                <button id="task3_CountWords" onclick="displayCountedWords('task3_text')" class="buttonSubmit">COUNT WORDS</button>                
+            </div>
 
             <h4>Task 4: </h4>
             <form id="form_task4" class="form">

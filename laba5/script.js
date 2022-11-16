@@ -56,6 +56,7 @@ document.getElementById("task2_S").onclick = function() {displayS(elementID)};
 
 //------------------------------------------------------------------------
 //3
+
 function calcWords(text)
 {
     var splitedText = text.split(" "); 
@@ -76,39 +77,38 @@ function calcWords(text)
     }
     return wordsNumber;
 }
-function displayCountedWords()
+function displayCountedWords(id)
 {
-    var text = document.getElementById("task3_text").value ;
+    var text = document.getElementById(id).value ;
     var wordsNumber = calcWords(text);
     document.cookie = "wordsNumber="+wordsNumber+";";
-    alert("Number of words in text = " + wordsNumber);  
-    return false;  
+    alert("Number of words in text = " + wordsNumber);   
 }
 
-var shouldDisplayFormAndMessage = false;
 window.addEventListener('load', (event) => {
-    var cookie = document.cookie;
-    if(cookie.length ==0 || cookie != "wordsNumber=")   //if there is cookie
-    {
+    // var cookie = document.cookie;
+    // if(cookie.length ==0 || cookie != "wordsNumber=")   //if there is cookie
+    // {
         
-        shouldDisplayFormAndMessage = true; 
-        alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
-        document.cookie = "wordsNumber=;"; //delete cookie
-        return false;              
-    }          
+    //     alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
+    //     document.cookie = "wordsNumber=;"; //delete cookie  
+    //     alert("cookies have been deleted!");                     
+    // }          
 });
 
 function changeFormVisibility(){
-    if(shouldDisplayFormAndMessage)
+    var cookie = document.cookie;
+    if(cookie.length != 0 && cookie != "wordsNumber=")   //if there is cookie
     {
-        
-        document.getElementById("form_task3").setAttribute("class", "hide");
-        shouldDisplayFormAndMessage = false;
-        alert("cookies have been deleted!");        
-        location.reload();
-    }        
-}
+        document.getElementById("form_task3").setAttribute("class", "hide");//hide form
 
+        setTimeout(function (){ //delaying for a second to load page
+        alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
+        document.cookie = "wordsNumber=;"; //delete cookie  
+        alert("cookies have been deleted!");  
+        document.getElementById("form_task3").setAttribute("class", "form"); }, 1000);                  
+    }         
+}
 
 //------------------------------------------------------------------------
 //4
