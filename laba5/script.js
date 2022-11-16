@@ -75,7 +75,7 @@ function calcWords(text)
     }
     return wordsNumber;
 }
-window.addEventListener('click', () => {
+window.addEventListener('load', () => {
     var cookie = document.cookie;
     if(cookie && cookie != "wordsNumber=;")
     {
