@@ -152,6 +152,9 @@ input, #task3_text {
 .form{
     margin-left: 2.5rem;
 }
+.hide{
+    display: none;
+}
 
 @media (min-width: 1001px) and (max-width: 1400px)
 {

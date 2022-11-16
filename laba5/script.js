@@ -1,3 +1,4 @@
+
 //1
 function exchangeTitles()
 {
@@ -75,15 +76,14 @@ function calcWords(text)
     }
     return wordsNumber;
 }
+var shouldDisplayFormAndMessage = false;
 window.addEventListener('load', (event) => {
     var cookie = document.cookie;
     if(cookie && cookie != "wordsNumber=;")
     {
-        // let form = getElementById("form_task3");
-        // form.style.display = 'none';
         alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!");
-        document.cookie = "wordsNumber=;"; 
-        alert("cookies have been deleted!");
+        document.cookie = "wordsNumber=;";  
+        shouldDisplayFormAndMessage = true;       
     }          
 });
 function displayCountedWords()
@@ -93,6 +93,16 @@ function displayCountedWords()
     document.cookie = "wordsNumber="+wordsNumber+";";
     alert("Number of words in text = " + wordsNumber);    
 }
+function changeFormVisibility(){
+    if(shouldDisplayFormAndMessage)
+    {
+        document.getElementById("form_task3").setAttribute("class", "hide");
+        shouldDisplayFormAndMessage = false;
+        alert("cookies have been deleted!");        
+        location.reload();
+    }        
+}
+
 
 //------------------------------------------------------------------------
 //4
