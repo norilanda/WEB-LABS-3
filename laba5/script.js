@@ -125,6 +125,10 @@ function setColorFromStorage(id)
     document.getElementById(id).style.backgroundColor = color;
 }
 document.getElementById("task4_color").onmouseout = function() {changeColor("div2", "task4_color")};
+if (window.matchMedia("only screen and (max-width: 450px)").matches)//for mobile
+{
+    document.getElementById("task4_color").onclick = function() {changeColor("div2", "task4_color")};
+}
 document.body.addEventListener("load", setColorFromStorage("div2"));    
 }
 

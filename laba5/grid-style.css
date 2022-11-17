@@ -301,7 +301,7 @@ input, #task3_text {
     .photo {
         float: none;
         margin: 0.5em 0em 0.7em 0em;
-        min-width: 220px;
+        min-width: 190px;
     }
     #task3_text {
         max-width: 22rem;
