@@ -124,7 +124,7 @@ header {
     float: right;
     margin: 0.5em 0em 0.7em 0.7em;
     max-width: 100%;
-    min-width: 300px;
+    min-width: 290px;
     height: auto;
 }
 
@@ -133,7 +133,7 @@ a {
     text-decoration: none;
 }
 ol{
-    margin: 2rem;
+    padding: 2rem;
 }
 
 .inputNumber{
@@ -150,11 +150,12 @@ input, #task3_text {
     min-height: 2rem;
 }
 #task3_text{
-    width: 40rem;
+    width: 38rem;
     height: 10rem;
 }
 .form{
-    margin-left: 2.5rem;
+    /* padding-left: 2.5em; */
+    width: fit-content;
 }
 .hide{
     display: none;
@@ -164,7 +165,7 @@ input, #task3_text {
     height: 10rem;
 }
 
-@media (min-width: 1001px) and (max-width: 1400px)
+@media (min-width: 1011px) and (max-width: 1400px)
 {
     header {
             display: grid;
@@ -182,7 +183,7 @@ input, #task3_text {
     }
 }
 
-@media (min-width: 650px) and (max-width: 1000px)
+@media (min-width: 660px) and (max-width: 1010px)
 {
     body {
             display: grid;
@@ -227,9 +228,15 @@ input, #task3_text {
     #headerContent {
         grid-area: headrContent;
     }
+    .photo {
+        float: none;
+    }
+    #task3_text {
+        width: 25rem;
+    }
 }
 
-@media (max-width: 649px) {
+@media (max-width: 659px) {
     body {
         display: grid;
         grid-template-areas:
@@ -291,5 +298,12 @@ input, #task3_text {
     }
     #footerContent {
         grid-area: footerContent;
+    }
+    .photo {
+        float: none;
+        margin: 0.5em 0em 0.7em 0em;
+    }
+    #task3_text {
+        width: 22rem;
     }
 }

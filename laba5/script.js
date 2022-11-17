@@ -53,8 +53,7 @@ function displayS(elementID)
         document.getElementById(elementID).insertAdjacentHTML('beforeend', "Parallelogram with a = " + a + " and h = "+ h + " has Square = "+S + " <br /> ");
     }    
 }
-elementID = "div3";
-document.getElementById("task2_S").onclick = function() {displayS(elementID)};
+document.getElementById("task2_S").onclick = function() {displayS("div3")};
 }
 
 //------------------------------------------------------------------------
