@@ -67,10 +67,7 @@ function calcWords(text)
     {
         for (let j = 0; j < splitedText[i].length; j++)
         {     
-            var code = splitedText[i].charCodeAt(j);
-            if ((code > 47 && code < 58) || // numeric (0-9)
-                (code > 64 && code < 91) || // upper alpha (A-Z)
-                (code > 96 && code < 123))// lower alpha (a-z)
+            if (checkIfIsAlphaNum(splitedText[i][j]))
             {
                 wordsNumber++;
                 break;
@@ -78,6 +75,17 @@ function calcWords(text)
         }
     }
     return wordsNumber;
+}
+function checkIfIsAlphaNum(char)
+{
+    var code = char.charCodeAt(0);
+        if ((code > 47 && code < 58) || // numeric (0-9)
+            (code > 64 && code < 91) || // upper alpha (A-Z)
+            (code > 96 && code < 123)|| // lower alpha (a-z)
+            (/[а-яА-Я]/.test(char)) //cyrillic
+            )
+            return true;
+        return false;
 }
 function displayCountedWords(id)
 {
@@ -87,7 +95,8 @@ function displayCountedWords(id)
     alert("Number of words in text = " + wordsNumber);   
 }
 
-function changeFormVisibility(){
+function changeFormVisibility()//changes form visability and deletes cookies
+{
     var cookie = document.cookie;
     if(cookie.length != 0 && cookie != "wordsNumber=")   //if there is cookie
     {
@@ -97,7 +106,7 @@ function changeFormVisibility(){
         alert("Information in cookies: "+cookie +"\nAfter clicking on OK your cookie will be deleted!"); 
         document.cookie = "wordsNumber=;"; //delete cookie  
         alert("cookies have been deleted!");  
-        document.getElementById("form_task3").setAttribute("class", "form"); }, 1000);                  
+        document.getElementById("form_task3").setAttribute("class", "form"); }, 300);                  
     }         
 }    
 }
@@ -122,7 +131,7 @@ document.body.addEventListener("load", setColorFromStorage("div2"));
 //------------------------------------------------------------------------
 //5
 {
-    function AddInput(blockId, blockNumber)
+    function AddInput(blockId, blockNumber)// adding buttons
     {
         if (document.getElementById(blockId).querySelector('#task5_add_'+ blockNumber) == null)
         {
@@ -133,7 +142,7 @@ document.body.addEventListener("load", setColorFromStorage("div2"));
         document.getElementById("task5_delete_"+ blockNumber).addEventListener("click", function () {deleteBackgroundForTextNodes(blockId);});
         }        
     }
-    function FindTextNodes(id)
+    function FindTextNodes(id)//finding all text nodes of the curr container (block)
     {    
         function textNodesOfElement(node)
         {
@@ -143,10 +152,7 @@ document.body.addEventListener("load", setColorFromStorage("div2"));
                 textInNode.replace("\n", "-");
                 for (let j = 0; j < textInNode.length; j++)
                     {     
-                        var code = textInNode.charCodeAt(j);
-                        if ((code > 47 && code < 58) || // numeric (0-9)
-                            (code > 64 && code < 91) || // upper alpha (A-Z)
-                            (code > 96 && code < 123))// lower alpha (a-z)
+                        if (checkIfIsAlphaNum(textInNode[j]))//function from task3
                         {
                             textNodes.push(node);
                             break;
