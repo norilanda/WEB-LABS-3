@@ -304,6 +304,7 @@ input, #task3_text {
         margin: 0.5em 0em 0.7em 0em;
     }
     #task3_text {
-        width: 22rem;
+        max-width: 22rem;
+        width: 100%;
     }
 }
