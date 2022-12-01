@@ -138,6 +138,14 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.inputNumber {
+    width: 10rem;
+    min-height: 2rem;
+}
+input{
+    font-size: 1.2rem;
+}
+
 @media (min-width: 1001px) and (max-width: 1400px)
 {
     header {
