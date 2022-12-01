@@ -12,7 +12,7 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-body{
+#bodyContainer{
     display: grid;
     grid-template-areas: 
     "main aside"
@@ -145,6 +145,16 @@ a {
 input{
     font-size: 1.2rem;
 }
+.notificaton
+{
+    display: block;
+    width: 100%;
+    /* position: relative; */
+    position: fixed;
+    z-index: 2;
+    background-color: rgb(111, 151, 204);
+    text-align: center;
+}
 
 @media (min-width: 1001px) and (max-width: 1400px)
 {
@@ -166,7 +176,7 @@ input{
 
 @media (min-width: 650px) and (max-width: 1000px)
 {
-    body {
+    #bodyContainer {
             display: grid;
             grid-template-areas:
                 "aside"
@@ -212,7 +222,7 @@ input{
 }
 
 @media (max-width: 649px) {
-    body {
+    #bodyContainer {
         display: grid;
         grid-template-areas:
             "aside"
