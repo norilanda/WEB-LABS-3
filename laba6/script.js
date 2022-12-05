@@ -32,7 +32,7 @@ function CreateNotificationBar()
 
 async function f(formData)
 {
-     let response = await fetch('https://norilanda.github.io/WEB-LABS-3', {
+     let response = await fetch('htpps://????????', {
         method: 'POST',
         body: formData
       });
