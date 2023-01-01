@@ -132,37 +132,32 @@ a {
     color: #772722;
     text-decoration: none;
 }
-ol{
-    padding: 2rem;
+/*-----------------------------------------------------------------*/
+/*for task of laba7*/
+#div3 {
+    padding: 0;
 }
-
-.inputNumber{
-    width: 10rem;
-    min-height: 2rem;
+#work {
+    width: 100%;
+    height: 100%;
+    background-color: darkslategrey;
 }
-input, #task3_text {
-    font-size:1.2rem;
+#controls{
+    width: 100%;
+    height: 50px;
+    padding: 0.5em;
 }
-.buttonSubmit{
-    font-size: 1.2rem;
-    margin: 1rem 0 1rem 0;
-    width: 10rem;
-    min-height: 2rem;
+#anim {
+    height: calc(100%- 50px);
+    width: 100%;    
+    border: 5px solid yellow;
 }
-#task3_text{
-    width: 38rem;
-    height: 10rem;
-}
-.form{
-    /* padding-left: 2.5em; */
-    width: fit-content;
-}
-.hide{
-    display: none;
-}
-.colorBox{
-    width: 10rem;
-    height: 10rem;
+/*buttons*/
+button {
+    width: 3.8em;
+    height: 1.4em;
+    font-size: 1.3em;
+    text-align: center;
 }
 
 @media (min-width: 1011px) and (max-width: 1400px)
@@ -230,9 +225,6 @@ input, #task3_text {
     }
     .photo {
         float: none;
-    }
-    #task3_text {
-        width: 25rem;
     }
 }
 
@@ -302,9 +294,5 @@ input, #task3_text {
         float: none;
         margin: 0.5em 0em 0.7em 0em;
         min-width: 190px;
-    }
-    #task3_text {
-        max-width: 22rem;
-        width: 100%;
     }
 }
