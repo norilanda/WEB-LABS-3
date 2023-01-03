@@ -17,6 +17,7 @@ button_close.onclick = function(){
 
 workRegion.style.display = 'none';
 
+var cornerIndex = 0;
 //initial display
 function fillWithTexture()
 {
@@ -35,6 +36,12 @@ function fillWithTexture()
 
     startPointX -= littleSquareSide;
     fillSquareWithImagePattern(startPointX, startPointY, littleSquareSide, './images/image4.png');
+
+    //place blue square
+    let arr = calcSquareCoords(cornerIndex);
+    setTimeout(function(){animateSquare(arr[0], arr[1], arr[2], arr[3]);}, 50);
+    
+    
 }
 function fillSquareWithImagePattern(startX, startY, sideSize, imagePath)
 {
@@ -55,17 +62,20 @@ button_start.onclick = function() {
     if(buttonName == "start")
     {
         button_start.disabled = true;
-        placeSquare(3);
+        controlSquare(cornerIndex);
         button_start.innerHTML = "reload";
         button_start.disabled = false;
     }
     else
     {
         button_start.innerHTML = "start";
+        ctx.clearRect(0, 0, animRegion.width, animRegion.height);
+        cornerIndex++;
+        fillWithTexture();//clears all
     }
 }
 
-function placeSquare(numberOfOuterSquare)
+function calcSquareCoords(numberOfOuterSquare)
 {
     const sideSize = 20;
     //--make a function
@@ -78,17 +88,23 @@ function placeSquare(numberOfOuterSquare)
     let startY ;
     let sideSizeWidth = sideSize;
     let sideSizeHeight = sideSize;
-    switch(numberOfOuterSquare)
+    switch(numberOfOuterSquare%4)
     {
-        case 1:{
+        case 0:{
             startX = startPointX + littleSquareSide - sideSize;
             startY = startPointY + littleSquareSide - sideSize;
             break;
         }
-        case 2:
+        case 1:
             {
                 startX = startPointX + littleSquareSide;
                 startY = startPointY + littleSquareSide - sideSize;
+                break;
+            }
+        case 2:
+            {
+                startX = startPointX + littleSquareSide;
+                startY = startPointY + littleSquareSide;
                 break;
             }
         case 3:
@@ -97,19 +113,23 @@ function placeSquare(numberOfOuterSquare)
                 startY = startPointY + littleSquareSide;
                 break;
             }
-        case 4:
-            {
-                startX = startPointX + littleSquareSide;
-                startY = startPointY + littleSquareSide;
-                break;
-            }
     }
-
-    ctx.beginPath();
-    ctx.fillStyle = 'blue';
-    ctx.rect(startX, startY, sideSize, sideSize);
-    ctx.fill();
-
+    return [startX, startY, sideSizeWidth, sideSizeHeight]
+    
+}
+function hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)
+{
+    if (startX<0||startY<0 || startX + sideSizeWidth > animRegion.width || startY + sideSizeHeight > animRegion.height)
+    {return true;}
+    return false;
+}
+function controlSquare(numberOfOuterSquare)
+{
+    let arr = calcSquareCoords(numberOfOuterSquare);
+    startX = arr[0];
+    startY=arr[1];
+    sideSizeWidth=arr[2];
+    sideSizeHeight=arr[3];
     let dirrection = 0;
     let i = 0;
   
@@ -139,13 +159,7 @@ function placeSquare(numberOfOuterSquare)
         dirrection++;
         i++; 
         if (hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)) { clearInterval(interval); }
-            }, 30);
-}
-function hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)
-{
-    if (startX==0||startY==0 || startX + sideSizeWidth > animRegion.width || startY + sideSizeHeight > animRegion.height)
-    {return true;}
-    return false;
+            }, 20);
 }
 function animateSquare(startX, startY, sideSizeWidth, sideSizeHeight)
 {
