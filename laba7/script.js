@@ -7,6 +7,8 @@ const button_play = document.getElementById('play');
 const button_close = document.getElementById('close');
 const button_start = document.getElementById('start');
 
+const text_messages_container = document.getElementById('messages');
+
 button_play.onclick = function() {
     workRegion.style.display = 'block';
     fillWithTexture();
@@ -59,6 +61,8 @@ function fillSquareWithImagePattern(startX, startY, sideSize, imagePath)
 //start animation
 button_start.onclick = function() {
     let buttonName = button_start.innerHTML;
+    console.log(text_messages_container.getElementsByTagName('p')[0]);
+    text_messages_container.getElementsByTagName('p')[0].innerHTML = "You've clicked " + buttonName + " button!";
     if(buttonName == "start")
     {
         button_start.disabled = true;
