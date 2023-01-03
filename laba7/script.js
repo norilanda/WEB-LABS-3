@@ -6,15 +6,35 @@ const ctx = animRegion.getContext('2d');
 const button_play = document.getElementById('play');
 const button_close = document.getElementById('close');
 const button_start = document.getElementById('start');
+document.getElementById("fastAnimation").checked = true;
 
 const text_messages_container = document.getElementById('messages');
+var interval;
 
 button_play.onclick = function() {
     workRegion.style.display = 'block';
     fillWithTexture();
+    localStorage.setItem('work appeared', getCurrTime());
 }
 button_close.onclick = function(){
     workRegion.style.display = 'none';
+    //clearing everything
+    clearInterval(interval);
+    button_start.innerHTML = "start";
+    button_start.disabled = false;
+    text_messages_container.getElementsByTagName('p')[0].innerHTML = "";
+    text_messages_container.getElementsByTagName('p')[1].innerHTML = "";
+    //write local storage
+    var archive = [],
+        keys = Object.keys(localStorage),
+        i = 0, key;
+
+    for (; key = keys[i]; i++) {
+        archive.push( key + '=' + localStorage.getItem(key));
+    }
+    console.log(archive);
+    localStorage.clear();
+    //...
 }
 
 workRegion.style.display = 'none';
@@ -61,19 +81,17 @@ function fillSquareWithImagePattern(startX, startY, sideSize, imagePath)
 //start animation
 button_start.onclick = function() {
     let buttonName = button_start.innerHTML;
-    console.log(text_messages_container.getElementsByTagName('p')[0]);
     text_messages_container.getElementsByTagName('p')[0].innerHTML = "You've clicked " + buttonName + " button!";
     if(buttonName == "start")
     {
         button_start.disabled = true;
         controlSquare(cornerIndex);
-        button_start.innerHTML = "reload";
-        button_start.disabled = false;
     }
     else
     {
         button_start.innerHTML = "start";
         ctx.clearRect(0, 0, animRegion.width, animRegion.height);
+        text_messages_container.getElementsByTagName('p')[1].innerHTML = "";
         cornerIndex++;
         fillWithTexture();//clears all
     }
@@ -118,7 +136,7 @@ function calcSquareCoords(numberOfOuterSquare)
                 break;
             }
     }
-    return [startX, startY, sideSizeWidth, sideSizeHeight]
+    return [startX, startY, sideSizeWidth, sideSizeHeight, startPointX + littleSquareSide, startPointY + littleSquareSide]
     
 }
 function hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)
@@ -134,11 +152,41 @@ function controlSquare(numberOfOuterSquare)
     startY=arr[1];
     sideSizeWidth=arr[2];
     sideSizeHeight=arr[3];
+
+    let horizontalLine = arr[5];
+    let verticalLine = arr[4];
+
     let dirrection = 0;
     let i = 0;
+    let first=false; let second=false; let third=false; let fourth =false;
+    
+    let timeOfInterval = getSpeed();
+    text_messages_container.getElementsByTagName('p')[1].innerHTML = "Squares entered: ";
   
-    var interval = setInterval(function() {
+    interval = setInterval(function() {
         animateSquare(startX, startY, sideSizeWidth, sideSizeHeight);
+        console.log(!second, startX < verticalLine, startY < horizontalLine);
+        console.log(!second, startX, verticalLine, startY, horizontalLine);
+        if(!first && startX < verticalLine && startY < horizontalLine)
+        {
+            text_messages_container.getElementsByTagName('p')[1].innerHTML += " 1 ";
+            first = true;
+        }
+        if(!second && startX < verticalLine && startY+ sideSizeHeight> horizontalLine)
+        {
+            text_messages_container.getElementsByTagName('p')[1].innerHTML += " 2 ";
+            second = true;
+        }
+        if(!third && startX +sideSizeWidth> verticalLine && startY+ sideSizeHeight> horizontalLine)
+        {
+            text_messages_container.getElementsByTagName('p')[1].innerHTML += " 3 ";
+            third = true;
+        }
+         if(!fourth && startX +sideSizeWidth> verticalLine && startY < horizontalLine)
+        {
+            text_messages_container.getElementsByTagName('p')[1].innerHTML += " 4 ";
+            fourth = true;
+        }
         switch (dirrection%4)
         {
             case 0:{//right
@@ -162,8 +210,13 @@ function controlSquare(numberOfOuterSquare)
         }
         dirrection++;
         i++; 
-        if (hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)) { clearInterval(interval); }
-            }, 20);
+        if (hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)) { 
+            clearInterval(interval); 
+            text_messages_container.getElementsByTagName('p')[0].innerHTML = "Animation has been stopped!";
+            button_start.innerHTML = "reload";
+            button_start.disabled = false;
+        }
+            }, timeOfInterval);
 }
 function animateSquare(startX, startY, sideSizeWidth, sideSizeHeight)
 {
@@ -171,4 +224,25 @@ function animateSquare(startX, startY, sideSizeWidth, sideSizeHeight)
     ctx.fillStyle = 'blue';
     ctx.rect(startX, startY, sideSizeWidth, sideSizeHeight);
     ctx.fill();
+}
+function getSpeed()
+{
+      if(document.getElementById("fastAnimation").checked )
+    {
+        return 20;
+    }
+    else if(document.getElementById("slowAnimation").checked){
+        return 90;
+    }
+    else{
+        return 500;
+    }
+}
+function getCurrTime()
+{    
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+    return dateTime;
 }
