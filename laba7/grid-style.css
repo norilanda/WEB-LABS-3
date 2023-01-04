@@ -150,7 +150,7 @@ a {
     justify-content: space-between;
 }
 #anim {
-    height: calc(100%- 50px);
+    height: calc(100% - 50px);
     width: 100%;    
     border: 5px solid yellow;
 }

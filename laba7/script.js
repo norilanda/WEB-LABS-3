@@ -9,12 +9,19 @@ const button_start = document.getElementById('start');
 document.getElementById("fastAnimation").checked = true;
 
 const text_messages_container = document.getElementById('messages');
+const localStorageValues = document.getElementById('localStorageValues');
 var interval;
-
+var messageCounter = 1;
+workRegion.style.display = 'none';
+///////////////////////////////////////////////
+//buttons
 button_play.onclick = function() {
     workRegion.style.display = 'block';
+    ctx.clearRect(0, 0, animRegion.width, animRegion.height);
     fillWithTexture();
-    localStorage.setItem('work appeared', getCurrTime());
+    localStorage.setItem(messageCounter + '. work appeared', getCurrTime());
+    messageCounter++;
+    clearDiv2();
 }
 button_close.onclick = function(){
     workRegion.style.display = 'none';
@@ -24,21 +31,36 @@ button_close.onclick = function(){
     button_start.disabled = false;
     text_messages_container.getElementsByTagName('p')[0].innerHTML = "";
     text_messages_container.getElementsByTagName('p')[1].innerHTML = "";
-    //write local storage
-    var archive = [],
-        keys = Object.keys(localStorage),
-        i = 0, key;
-
-    for (; key = keys[i]; i++) {
-        archive.push( key + '=' + localStorage.getItem(key));
-    }
-    console.log(archive);
+    localStorage.setItem(messageCounter + '. work disappeared', getCurrTime());
+    //read local storage
+    readFromLocalStorage();
     localStorage.clear();
+    messageCounter = 1;
     //...
 }
 
-workRegion.style.display = 'none';
+function readFromLocalStorage()
+{
+    var keys = Object.keys(localStorage),
+    i = 0, key;
+    var dict = {};;
 
+    for (; key = keys[i]; i++) {
+        dict[parseInt(key.split('.')[0])] = key;
+        
+    }
+    let dictLength = Object.keys(dict).length;
+    for (let i=1;i<=dictLength;i++)
+    {
+        let p = document.createElement("p");
+        p.innerHTML = dict[i] + ' - ' + localStorage.getItem(dict[i]);
+        localStorageValues.append(p);
+    }
+}
+function clearDiv2()
+{
+    localStorageValues.replaceChildren();
+}
 var cornerIndex = 0;
 //initial display
 function fillWithTexture()
@@ -84,11 +106,15 @@ button_start.onclick = function() {
     text_messages_container.getElementsByTagName('p')[0].innerHTML = "You've clicked " + buttonName + " button!";
     if(buttonName == "start")
     {
+        localStorage.setItem(messageCounter + '. start has been clicked', getCurrTime());
+        messageCounter++;
         button_start.disabled = true;
         controlSquare(cornerIndex);
     }
     else
     {
+        localStorage.setItem(messageCounter + '. reload has been clicked', getCurrTime());
+        messageCounter++;
         button_start.innerHTML = "start";
         ctx.clearRect(0, 0, animRegion.width, animRegion.height);
         text_messages_container.getElementsByTagName('p')[1].innerHTML = "";
@@ -165,25 +191,31 @@ function controlSquare(numberOfOuterSquare)
   
     interval = setInterval(function() {
         animateSquare(startX, startY, sideSizeWidth, sideSizeHeight);
-        console.log(!second, startX < verticalLine, startY < horizontalLine);
-        console.log(!second, startX, verticalLine, startY, horizontalLine);
         if(!first && startX < verticalLine && startY < horizontalLine)
         {
+            localStorage.setItem(messageCounter+ '. square 1 has been entered', getCurrTime());
+            messageCounter++;
             text_messages_container.getElementsByTagName('p')[1].innerHTML += " 1 ";
             first = true;
         }
         if(!second && startX < verticalLine && startY+ sideSizeHeight> horizontalLine)
         {
+            localStorage.setItem(messageCounter+'. square 2 has been entered', getCurrTime());
+            messageCounter++;
             text_messages_container.getElementsByTagName('p')[1].innerHTML += " 2 ";
             second = true;
         }
         if(!third && startX +sideSizeWidth> verticalLine && startY+ sideSizeHeight> horizontalLine)
         {
+            localStorage.setItem(messageCounter+ '. square 3 has been entered', getCurrTime());
+            messageCounter++;
             text_messages_container.getElementsByTagName('p')[1].innerHTML += " 3 ";
             third = true;
         }
          if(!fourth && startX +sideSizeWidth> verticalLine && startY < horizontalLine)
         {
+            localStorage.setItem(messageCounter+ '. square 4 has been entered', getCurrTime());
+            messageCounter++;
             text_messages_container.getElementsByTagName('p')[1].innerHTML += " 4 ";
             fourth = true;
         }
@@ -212,6 +244,8 @@ function controlSquare(numberOfOuterSquare)
         i++; 
         if (hasExceed(startX, startY, sideSizeWidth, sideSizeHeight)) { 
             clearInterval(interval); 
+            localStorage.setItem(messageCounter+ '. Animation has been stopped!', getCurrTime());
+            messageCounter++;
             text_messages_container.getElementsByTagName('p')[0].innerHTML = "Animation has been stopped!";
             button_start.innerHTML = "reload";
             button_start.disabled = false;
