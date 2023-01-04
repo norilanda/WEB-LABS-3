@@ -263,7 +263,7 @@ function getSpeed()
 {
       if(document.getElementById("fastAnimation").checked )
     {
-        return 20;
+        return 10;
     }
     else if(document.getElementById("slowAnimation").checked){
         return 90;
