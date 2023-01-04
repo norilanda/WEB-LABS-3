@@ -232,6 +232,10 @@ button {
     .photo {
         float: none;
     }
+    #controlsHolder {
+        padding: 0.2em;
+        font-size: 1.1em;
+    }
 }
 
 @media (max-width: 659px) {
@@ -300,5 +304,14 @@ button {
         float: none;
         margin: 0.5em 0em 0.7em 0em;
         min-width: 190px;
+    }
+    button {
+        width: 3.4em;
+        height: 1.4em;
+        font-size: 1.0em;
+    }
+    #controlsHolder {
+        padding: 0.2em;
+        font-size: 0.8em;
     }
 }
