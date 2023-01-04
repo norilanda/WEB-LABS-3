@@ -311,7 +311,12 @@ button {
         font-size: 1.0em;
     }
     #controlsHolder {
+        height: 60px;
         padding: 0.2em;
         font-size: 0.8em;
+        flex-direction: column;
+    }
+    #anim {
+        height: calc(100% - 60px);
     }
 }
