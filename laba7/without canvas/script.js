@@ -77,12 +77,12 @@ function placeBlueSquare(numberOfOuterSquare)
 function calcSquareCoords(numberOfOuterSquare)
 {
     const sideSize = 20;
-    //--make a function
+
     let squareSide = Math.min(animRegion.offsetHeight, animRegion.offsetWidth);
     let littleSquareSide = squareSide/2;
     let startPointX = (animRegion.offsetWidth - squareSide-borderSize)/2;
     let startPointY = (animRegion.offsetHeight - squareSide-borderSize)/2;
-    //--make a function
+
     let startX ;
     let startY ;
     let sideSizeWidth = sideSize;
