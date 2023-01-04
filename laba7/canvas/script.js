@@ -20,6 +20,7 @@ button_play.onclick = function() {
     ctx.clearRect(0, 0, animRegion.width, animRegion.height);
     fillWithTexture();
     localStorage.setItem(messageCounter + '. work appeared', getCurrTime());
+    text_messages_container.getElementsByTagName('p')[0].innerHTML = "You've clicked play button!";
     messageCounter++;
     clearDiv2();
 }
